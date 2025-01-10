@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatalogoWPF", "CatalogoWPF\CatalogoWPF.csproj", "{C90D6E0B-50CB-4F8E-9488-5CB9ABC86E09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services-Repos", "Services-Repos\Services-Repos.csproj", "{FBE39D84-7213-46B5-8CEA-2799C5E2246D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C90D6E0B-50CB-4F8E-9488-5CB9ABC86E09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C90D6E0B-50CB-4F8E-9488-5CB9ABC86E09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C90D6E0B-50CB-4F8E-9488-5CB9ABC86E09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C90D6E0B-50CB-4F8E-9488-5CB9ABC86E09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBE39D84-7213-46B5-8CEA-2799C5E2246D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBE39D84-7213-46B5-8CEA-2799C5E2246D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBE39D84-7213-46B5-8CEA-2799C5E2246D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBE39D84-7213-46B5-8CEA-2799C5E2246D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {29A9A9A9-22A7-439E-BBBA-A101B49B5361}
+	EndGlobalSection
+EndGlobal
