@@ -10,11 +10,11 @@
             <DataTemplate DataType="{x:Type viewmodel:MainViewModel}">
                 <local:MainWindow/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type viewmodel:HomeViewModel}">
-                <view:HomeView/>
+            <DataTemplate DataType="{x:Type viewmodel:CategViewModel}">
+                <view:CategView/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type viewmodel:DetailViewModel}">
-                <view:DetailView/>
+            <DataTemplate DataType="{x:Type viewmodel:ProductViewModel}">
+                <view:ProductView/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type viewmodel:SettingsViewModel}">
                 <view:SettingsView/>

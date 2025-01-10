@@ -61,7 +61,7 @@ namespace CatalogoWPF.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Detail.
+        ///   Busca una cadena traducida similar a Products.
         /// </summary>
         public static string BtDetail {
             get {
@@ -70,7 +70,7 @@ namespace CatalogoWPF.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Home.
+        ///   Busca una cadena traducida similar a Categories.
         /// </summary>
         public static string BtHome {
             get {

@@ -19,8 +19,8 @@
                 <Border Background="Transparent">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto" MinWidth="30"/>
+                            <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <Path x:Name="IconPath" Grid.Column="0" Data="{Binding Icon, ElementName=root}" VerticalAlignment="Center" HorizontalAlignment="Center" 
                                                Stroke="{Binding Stroke, ElementName=root}"

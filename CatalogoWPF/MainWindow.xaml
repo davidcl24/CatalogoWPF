@@ -14,7 +14,7 @@
     </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" MinWidth="90" />
+            <ColumnDefinition Width="Auto" MinWidth="110" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
@@ -24,12 +24,12 @@
                                 Text="{x:Static properties:Resources.BtHome}" Icon="{StaticResource Home}" 
                                 Stroke="{StaticResource IconBrush}"
                                 IsChecked="True"
-                                Command="{Binding ActivateHomeViewCommand}"
+                                Command="{Binding ActivateCategViewCommand}"
                                 GroupName="SideMenu"/>
 
             <controls:NavButton Margin="3" Background="{StaticResource IconBackBrush}"  
                                 Text="{x:Static properties:Resources.BtDetail}" Icon="{StaticResource Detail}" Stroke="{StaticResource IconBrush}"
-                                Command="{Binding ActivateDetailViewCommand}"
+                                Command="{Binding ActivateProductViewCommand}"
                                 GroupName="SideMenu"/>
 
             <controls:NavButton Margin="3" Background="{StaticResource IconBackBrush}" 

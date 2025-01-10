@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace CatalogoWPF.Views
 {
     /// <summary>
-    /// Lógica de interacción para DetailView.xaml
+    /// Lógica de interacción para CategView.xaml
     /// </summary>
-    public partial class DetailView : UserControl
+    public partial class CategView : UserControl
     {
-        public DetailView()
+        public CategView()
         {
             InitializeComponent();
         }

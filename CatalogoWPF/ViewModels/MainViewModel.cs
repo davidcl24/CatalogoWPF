@@ -8,17 +8,19 @@ partial class MainViewModel : ObservableObject
     [ObservableProperty]
     private object _activeView;
 
-
-    public HomeViewModel HomeViewModel { get; set; } = new();
-    public DetailViewModel DetailViewModel { get; set; } = new();
+    public CategViewModel CategViewModel { get; set; } = new();
+    public ProductViewModel ProductViewModel { get; set; } = new();
     public SettingsViewModel SettingsViewModel { get; set; } = new();
 
-    public MainViewModel() => _activeView = HomeViewModel;
+    public MainViewModel() => _activeView = CategViewModel;
+
 
     [RelayCommand]
-    private void ActivateHomeView() => ActiveView = HomeViewModel;
+    private void ActivateProductView() => ActiveView = ProductViewModel;
+
     [RelayCommand]
-    private void ActivateDetailView() => ActiveView = DetailViewModel;
+    private void ActivateCategView() => ActiveView = CategViewModel;
+
     [RelayCommand]
     private void ActivateSettingsView() => ActiveView = SettingsViewModel;
     

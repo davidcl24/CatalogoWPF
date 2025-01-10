@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace CatalogoWPF.Views
 {
     /// <summary>
-    /// Lógica de interacción para HomeView.xaml
+    /// Lógica de interacción para ProductView.xaml
     /// </summary>
-    public partial class HomeView : UserControl
+    public partial class ProductView : UserControl
     {
-        public HomeView()
+        public ProductView()
         {
             InitializeComponent();
         }
