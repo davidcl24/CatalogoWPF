@@ -5,7 +5,7 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatalogoWPF", "CatalogoWPF\CatalogoWPF.csproj", "{C90D6E0B-50CB-4F8E-9488-5CB9ABC86E09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services-Repos", "Services-Repos\Services-Repos.csproj", "{FBE39D84-7213-46B5-8CEA-2799C5E2246D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services Repos", "Services-Repos\Services Repos.csproj", "{FBE39D84-7213-46B5-8CEA-2799C5E2246D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

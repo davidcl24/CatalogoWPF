@@ -9,9 +9,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.DataContext>
-        <viewmodel:CategViewModel />
+        <viewmodel:ProductViewModel />
     </UserControl.DataContext>
     <Grid>
-        <Label Content="{x:Static properties:Resources.BtDetail}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="48"/>
+        <ListView ItemsSource="{Binding Products}"/>
     </Grid>
 </UserControl>

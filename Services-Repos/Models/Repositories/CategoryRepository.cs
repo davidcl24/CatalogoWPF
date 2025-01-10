@@ -4,7 +4,7 @@ namespace Services_Repos.Models.Repositories;
 
 public class CategoryRepository : IRepository<Category>
 {
-    private List<Category> _categories = [];
+    private List<Category> _categories = [new(1, "Categ1"), new(2, "Categ2")];
     public void Add(Category item) => _categories.Add(item);
 
     public List<Category> GetAll() => _categories;

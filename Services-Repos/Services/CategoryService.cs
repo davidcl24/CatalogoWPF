@@ -9,10 +9,10 @@ public class CategoryService
     public int CategoryId { get; set; }
     private CategoryRepository categRepository;
 
-    public CategoryService(CategoryRepository categoryRepository)
+    public CategoryService()
     {
         CategoryId = 1;
-        this.categRepository = categoryRepository;
+        this.categRepository = new();
     }
 
     public void Add(Category item)

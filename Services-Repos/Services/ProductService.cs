@@ -9,10 +9,10 @@ public class ProductService
     public int ProductId { get; set; }
     private ProductRepository productRepository;
 
-    public ProductService(ProductRepository productRepository)
+    public ProductService()
     {
         ProductId = 1;
-        this.productRepository = productRepository;
+        this.productRepository = new();
     }
 
     public void Add(Product item)

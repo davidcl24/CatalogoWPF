@@ -12,7 +12,6 @@
         <viewmodel:CategViewModel />
     </UserControl.DataContext>
     <Grid>
-        <Label Content="{x:Static properties:Resources.BtHome}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="48"/>
-
+        <ListView ItemsSource="{Binding Categories}"/>
     </Grid>
 </UserControl>
