@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Services_Repos.Models.Data_Classes;
 using Services_Repos.Services;
+using System.Collections.ObjectModel;
 
 namespace CatalogoWPF.ViewModels;
 
@@ -10,7 +11,7 @@ partial class CategViewModel : ObservableObject
     private CategoryService categoryService = new();
 
     [ObservableProperty]
-    List<Category> _categories;
+    ObservableCollection<Category> _categories;
 
-    public CategViewModel() => _categories = categoryService.GetAll();
+    public CategViewModel() => _categories = new(categoryService.GetAll());
 }

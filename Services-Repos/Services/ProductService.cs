@@ -57,15 +57,8 @@ public class ProductService
 
     public List<Product> GetAll()
     {
-        List<Product> list = productRepository.GetAll();
-        if (list.Count > 0)
-        {
-            return list;
-        }
-        else
-        {
-            throw new ProductException("No products stored");
-        }
+        return productRepository.GetAll();
+      
     }
 
     public void Update(Product p)

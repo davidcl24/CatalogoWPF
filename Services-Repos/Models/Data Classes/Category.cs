@@ -10,7 +10,7 @@ public class Category(int id, string name)
     {
         return $"""
                 {Name} 
-                ------------------------
+              
                 """;
     }
 }

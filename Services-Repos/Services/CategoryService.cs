@@ -58,15 +58,8 @@ public class CategoryService
 
     public List<Category> GetAll()
     {
-        List<Category> list = categRepository.GetAll();
-        if (list.Count > 0)
-        {
-            return list;
-        }
-        else
-        {
-            throw new CategoryException("No categories stored");
-        }
+        return categRepository.GetAll();
+     
     }
 
     public void Update(Category c)
