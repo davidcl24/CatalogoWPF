@@ -1,6 +1,6 @@
 ﻿namespace Services_Repos.Models.Data_Classes;
 
-public class Product(int id, string name, int catId, string description, decimal price)
+public class Product(int id, int catId, string name, string description, decimal price)
 {
     public int Id { get; set; } = id;
     public int CategoryId { get; set; } = catId;

@@ -12,6 +12,30 @@
         <viewmodel:ProductViewModel />
     </UserControl.DataContext>
     <Grid>
-        <ListView ItemsSource="{Binding Products}"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+        <ListView ItemsSource="{Binding Products}" Grid.Column="0"/>
+        <Grid Grid.Column="1">
+            <!--<Button Content="hola" Command="{Binding HolaCommand}"/>-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Label Content="Nombre" Grid.Row="0"/>
+            <TextBox Text="{Binding Name}" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+            <Label Content="Descripcion" Grid.Row="2"/>
+            <TextBox Text="{Binding Description}" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+            <Label Content="Precio" Grid.Row="4"/>
+            <TextBox Text="{Binding Price}" Grid.Row="5" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+            <Button Content="Añadir" Grid.Row="6" HorizontalAlignment="Right" 
+            Command="{Binding AddCommand}" VerticalAlignment="Bottom"/>
+        </Grid>
     </Grid>
 </UserControl>

@@ -11,7 +11,7 @@ partial class CategViewModel : ObservableObject
 {
 
     private CategoryService categoryService = new();
-    private int currentId = 0;
+    private int currentId;
 
     [ObservableProperty]
     ObservableCollection<Category> _categories;
@@ -19,10 +19,11 @@ partial class CategViewModel : ObservableObject
     [ObservableProperty]
     string _name;
 
-    public CategViewModel() => _categories = new(categoryService.GetAll());
-
-
- 
+    public CategViewModel()
+    {
+        _categories = new(categoryService.GetAll());
+        currentId = categoryService.GetAll().Count();
+    }
 
     [RelayCommand]
     private void Add()
@@ -31,8 +32,10 @@ partial class CategViewModel : ObservableObject
         RefreshCollection();
     }
 
+
     private void RefreshCollection()
     {
         _categories = new(categoryService.GetAll());
     }
+
 }
