@@ -4,7 +4,7 @@ namespace Services_Repos.Models.Repositories;
 
 public class ProductRepository : IRepository<Product>
 {
-    private List<Product> _products = [new(1, "Prod1", 1, "Prod1Desc",30)];
+    private List<Product> _products = [];
     public void Add(Product item) => _products.Add(item);
 
     public List<Product> GetAll() => _products;

@@ -12,6 +12,22 @@
         <viewmodel:CategViewModel />
     </UserControl.DataContext>
     <Grid>
-        <ListView ItemsSource="{Binding Categories}"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+        <ListView ItemsSource="{Binding Categories}" Grid.Column="0"/>
+        <Grid Grid.Column="1">
+            <!--<Button Content="hola" Command="{Binding HolaCommand}"/>-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition/>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+            <Label Content="Nombre" Grid.Row="0"/>
+            <TextBox Text="{Binding Name}" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Top"/> 
+            <Button Content="Añadir" Grid.Row="2" HorizontalAlignment="Right" 
+                    Command="{Binding AddCommand}" VerticalAlignment="Center"/>
+        </Grid>
     </Grid>
 </UserControl>
