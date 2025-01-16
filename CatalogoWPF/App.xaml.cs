@@ -1,12 +1,11 @@
 ﻿using CatalogoWPF.ViewModels;
+using CatalogoWPF.Views;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Services_Repos.Data;
 using Services_Repos.Models.Data_Classes;
 using Services_Repos.Models.Repositories;
 using Services_Repos.Services;
-using System.Configuration;
-using System.Data;
 using System.Windows;
 
 namespace CatalogoWPF
@@ -16,7 +15,6 @@ namespace CatalogoWPF
     /// </summary>
     public partial class App : Application
     {
-
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
@@ -25,6 +23,12 @@ namespace CatalogoWPF
 
             services.AddTransient<MainWindow>();
             services.AddTransient<MainViewModel>();
+            services.AddTransient<CategView>();
+            services.AddTransient<CategViewModel>();
+            services.AddTransient<ProductView>();
+            services.AddTransient<ProductViewModel>();
+            services.AddTransient<SettingsView>();
+            services.AddTransient<SettingsViewModel>();
             services.AddScoped<IRepository<Product>, ProductRepository>();
             services.AddScoped<IRepository<Category>, CategoryRepository>();
             services.AddScoped<IService<Product>, ProductService>();
