@@ -7,23 +7,16 @@ using System.Windows;
 
 namespace CatalogoWPF.ViewModels;
 
-partial class CategViewModel : ObservableObject
+partial class CategViewModel (IService<Category> categoryService) : ObservableObject
 {
 
-    private CategoryService categoryService = new();
-    private int currentId;
-
     [ObservableProperty]
-    ObservableCollection<Category> _categories;
+    ObservableCollection<Category> _categories = new(categoryService.GetAll());
 
     [ObservableProperty]
     string _name;
 
-    public CategViewModel()
-    {
-        _categories = new(categoryService.GetAll());
-        currentId = categoryService.GetAll().Count();
-    }
+
 
     [RelayCommand]
     private void Add()

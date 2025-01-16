@@ -7,19 +7,6 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
-            <DataTemplate DataType="{x:Type viewmodel:MainViewModel}">
-                <local:MainWindow/>
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type viewmodel:CategViewModel}">
-                <view:CategView/>
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type viewmodel:ProductViewModel}">
-                <view:ProductView/>
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type viewmodel:SettingsViewModel}">
-                <view:SettingsView/>
-            </DataTemplate>
-
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Themes/Light/LightTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>

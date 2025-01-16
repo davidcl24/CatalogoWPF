@@ -8,10 +8,9 @@
         xmlns:controls="clr-namespace:CatalogoWPF.CustomControls"
         xmlns:properties="clr-namespace:CatalogoWPF.Properties"
         mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance viewmodel:MainViewModel}"
         Title="MainWindow" Height="450" Width="800">
-    <Window.DataContext>
-        <viewmodel:MainViewModel />
-    </Window.DataContext>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" MinWidth="110" />
