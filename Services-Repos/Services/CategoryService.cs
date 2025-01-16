@@ -4,7 +4,7 @@ using Services_Repos.Models.Repositories;
 
 namespace Services_Repos.Services;
 
-public class CategoryService
+public class CategoryService : IService<Category>
 {
     public int CategoryId { get; set; }
     private CategoryRepository categRepository;

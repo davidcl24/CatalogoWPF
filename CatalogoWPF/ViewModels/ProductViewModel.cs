@@ -33,11 +33,14 @@ partial class ProductViewModel : ObservableObject
     {
         productService.Add(new Product(currentId++, 0, Name, Description, Price));
         RefreshCollection();
+        Name = "";
+        Description = "";
+        Price = 0;
     }
 
     private void RefreshCollection()
     {
-        _products = new(productService.GetAll());
+       Products = new(productService.GetAll());
     }
 
 }

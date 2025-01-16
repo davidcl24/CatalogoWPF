@@ -30,12 +30,13 @@ partial class CategViewModel : ObservableObject
     {
         categoryService.Add(new Category(currentId++, Name));
         RefreshCollection();
+        Name = "";
     }
 
 
     private void RefreshCollection()
     {
-        _categories = new(categoryService.GetAll());
+        Categories = new(categoryService.GetAll());
     }
 
 }

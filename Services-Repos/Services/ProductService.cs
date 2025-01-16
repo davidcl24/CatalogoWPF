@@ -4,7 +4,7 @@ using Services_Repos.Models.Repositories;
 
 namespace Services_Repos.Services;
 
-public class ProductService
+public class ProductService : IService<Product>
 {
     public int ProductId { get; set; }
     private ProductRepository productRepository;
