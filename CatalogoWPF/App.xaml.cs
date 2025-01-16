@@ -35,7 +35,6 @@ namespace CatalogoWPF
             var view = serviceProvider.GetService<MainWindow>();
             view!.DataContext = serviceProvider.GetService<MainViewModel>();
             view.Show();
-
         }
     }
 
