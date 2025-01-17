@@ -6,14 +6,17 @@ using System.Collections.ObjectModel;
 
 namespace CatalogoWPF.ViewModels;
 
-partial class ProductViewModel : ObservableObject
+partial class ProductViewModel (IService<Product> productService,
+                                IService<Category> categService) : ObservableObject
 {
-    private ProductService productService = new();
-    private int currentId;
+
 
 
     [ObservableProperty]
-    ObservableCollection<Product> _products;
+    ObservableCollection<Product> _products = new(productService.GetAll());
+
+    [ObservableProperty]
+    ObservableCollection<Category> _categories = new(categService.GetAll());
 
     [ObservableProperty]
     string _name;
@@ -22,16 +25,10 @@ partial class ProductViewModel : ObservableObject
     [ObservableProperty]
     decimal _price;
 
-    public ProductViewModel()
-    {
-        _products = new(productService.GetAll());
-        currentId = productService.GetAll().Count();
-    }
-
     [RelayCommand]
     private void Add()
     {
-        productService.Add(new Product(currentId++, 0, Name, Description, Price));
+        //productService.Add(new Product(currentId++, 0, Name, Description, Price));
         RefreshCollection();
         Name = "";
         Description = "";

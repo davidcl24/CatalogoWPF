@@ -3,17 +3,16 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace CatalogoWPF.ViewModels;
 
-partial class MainViewModel : ObservableObject
+partial class MainViewModel(CategViewModel categViewModel,
+                            ProductViewModel productViewModel,
+                            SettingsViewModel settingsViewModel) : ObservableObject
 {
     [ObservableProperty]
-    private object _activeView;
+    private object _activeView = categViewModel;
 
-    public CategViewModel CategViewModel { get; set; } = new();
-    public ProductViewModel ProductViewModel { get; set; } = new();
-    public SettingsViewModel SettingsViewModel { get; set; } = new();
-
-    public MainViewModel() => _activeView = CategViewModel;
-
+    public CategViewModel CategViewModel { get; set; } = categViewModel;
+    public ProductViewModel ProductViewModel { get; set; } = productViewModel;
+    public SettingsViewModel SettingsViewModel { get; set; } = settingsViewModel;
 
     [RelayCommand]
     private void ActivateProductView() => ActiveView = ProductViewModel;

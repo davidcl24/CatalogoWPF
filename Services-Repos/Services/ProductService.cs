@@ -4,16 +4,8 @@ using Services_Repos.Models.Repositories;
 
 namespace Services_Repos.Services;
 
-public class ProductService : IService<Product>
+public class ProductService(IRepository<Product> productRepository) : IService<Product>
 {
-    public int ProductId { get; set; }
-    private ProductRepository productRepository;
-
-    public ProductService()
-    {
-        ProductId = 1;
-        this.productRepository = new();
-    }
 
     public void Add(Product item)
     {

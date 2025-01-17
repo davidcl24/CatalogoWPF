@@ -4,16 +4,8 @@ using Services_Repos.Models.Repositories;
 
 namespace Services_Repos.Services;
 
-public class CategoryService : IService<Category>
-{
-    public int CategoryId { get; set; }
-    private CategoryRepository categRepository;
-
-    public CategoryService()
-    {
-        CategoryId = 1;
-        this.categRepository = new();
-    }
+public class CategoryService (IRepository<Category> categRepository) : IService<Category>
+{ 
 
     public void Add(Category item)
     {

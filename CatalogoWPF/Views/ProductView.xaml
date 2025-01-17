@@ -7,10 +7,9 @@
              xmlns:viewmodel="clr-namespace:CatalogoWPF.ViewModels"
              xmlns:properties="clr-namespace:CatalogoWPF.Properties"
              mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance viewmodel:ProductViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.DataContext>
-        <viewmodel:ProductViewModel />
-    </UserControl.DataContext>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

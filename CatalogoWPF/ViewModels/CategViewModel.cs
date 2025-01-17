@@ -21,7 +21,7 @@ partial class CategViewModel (IService<Category> categoryService) : ObservableOb
     [RelayCommand]
     private void Add()
     {
-        categoryService.Add(new Category(currentId++, Name));
+        categoryService.Add(new Category(Name));
         RefreshCollection();
         Name = "";
     }
