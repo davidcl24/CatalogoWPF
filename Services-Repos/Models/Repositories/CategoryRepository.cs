@@ -1,27 +1,22 @@
 ﻿using Services_Repos.Models.Data_Classes;
+using Services_Repos.Data;
+
 
 namespace Services_Repos.Models.Repositories;
 
-public class CategoryRepository : IRepository<Category>
+public class CategoryRepository(AppDbContext dbContext) : IRepository<Category>
 {
-    private List<Category> _categories = [];
-    public void Add(Category item) => _categories.Add(item);
+    
+    private readonly AppDbContext _dbContext = dbContext;
+    //private List<Category> _categories = [];
+    public void Add(Category item) => _dbContext.Add(item);
 
-    public List<Category> GetAll() => _categories;
+    public List<Category> GetAll() => [.. _dbContext.Categories];
 
-    public Category GetById(int id) => _categories.Find(c => c.Id == id);
+    public Category GetById(int id) => _dbContext.Find<Category>(id);
 
-    public void Remove(Category item) => _categories.Remove(item);
+    public void Remove(Category item) => _dbContext.Remove(item);
 
-    public void Update(Category item)
-    {
-        Category? categ = _categories.Find(c => c.Id == item.Id);
-        if (categ != null)
-        {
-            categ.Id = item.Id;
-            categ.Name = item.Name;
-            categ.Products = item.Products;
-        }
-    }
+    public void Update(Category item) => _dbContext.Update(item);
 }
 
