@@ -7,14 +7,26 @@ public class ProductRepository(AppDbContext dbContext) : IRepository<Product>
 {
     private readonly AppDbContext _dbContext = dbContext;
     //private List<Product> _products = [];
-    public void Add(Product item) => _dbContext.Add(item);
+    public void Add(Product item)
+    {
+        _dbContext.Products.Add(item);
+        _dbContext.SaveChanges();
+    }
 
     public List<Product> GetAll() => [.. _dbContext.Products];
 
-    public Product GetById(int id) => _dbContext.Find<Product>(id);
+    public Product GetById(int id) => _dbContext.Products.Find(id);
 
-    public void Remove(Product item) => _dbContext.Remove(item);
+    public void Remove(Product item)
+    {
+        _dbContext.Remove(item);
+        _dbContext.SaveChanges();
+    }
 
-    public void Update(Product item) => _dbContext.Update(item);
+    public void Update(Product item)
+    {
+        _dbContext.Update(item);
+        _dbContext.SaveChanges();
+    }
 }
 

@@ -37,15 +37,11 @@ namespace CatalogoWPF
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer("Server=localhost, 1433;Database=prodDB;User Id=sa;Password=Interfaces-2425;TrustServerCertificate=true;"));
             var serviceProvider = services.BuildServiceProvider();
 
-            using (var scope = serviceProvider.CreateScope())
-            {
-                var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+            //using (var scope = serviceProvider.CreateScope())
+            //{
+            //    var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
 
-                if(!dbContext.Database.CanConnect())
-                {
-                    dbContext.Database.EnsureCreated();
-                }
-            }
+            //}
 
           
             var view = serviceProvider.GetService<MainWindow>();
