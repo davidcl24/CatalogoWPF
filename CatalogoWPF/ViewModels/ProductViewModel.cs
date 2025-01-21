@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using CommunityToolkit.Mvvm.Messaging.Messages;
 using Services_Repos.Exceptions;
 using Services_Repos.Models.Data_Classes;
 using Services_Repos.Services;
@@ -7,16 +9,30 @@ using System.Collections.ObjectModel;
 
 namespace CatalogoWPF.ViewModels;
 
-partial class ProductViewModel (IService<Product> productService,
-                                IService<Category> categService) : ObservableObject
+partial class ProductViewModel : ObservableObject
 {
+   
+    private readonly IService<Product> productService;
+    private readonly IService<Category> categService;
 
+    public ProductViewModel(IService<Product> productService, IService<Category> categService)
+    {
+        this.productService = productService;
+        this.categService = categService;
+        Products = new ObservableCollection<Product>(productService.GetAll());
+        Categories = new ObservableCollection<Category>(categService.GetAll());
+
+        WeakReferenceMessenger.Default.Register<ValueChangedMessage<string>>(this, (r, m) =>
+        {
+            RefreshCollection();
+        });
+    }
 
     [ObservableProperty]
-    ObservableCollection<Product> _products = new(productService.GetAll());
+    ObservableCollection<Product> _products;
 
     [ObservableProperty]
-    ObservableCollection<Category> _categories = new(categService.GetAll());
+    ObservableCollection<Category> _categories;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(Categories))]
