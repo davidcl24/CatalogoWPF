@@ -15,7 +15,7 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="200"/>
         </Grid.ColumnDefinitions>
-        <ListView ItemsSource="{Binding Products}" Grid.Column="0"/>
+        <ListView ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct}" Grid.Column="0"/>
         <Grid Grid.Column="1">
             <!--<Button Content="hola" Command="{Binding HolaCommand}"/>-->
             <Grid.RowDefinitions>
@@ -25,16 +25,31 @@
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
                 <RowDefinition />
             </Grid.RowDefinitions>
             <Label Content="Nombre" Grid.Row="0"/>
-            <TextBox Text="{Binding Name}" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+            <TextBox Text="{Binding SelectedProduct.Name}" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
             <Label Content="Descripcion" Grid.Row="2"/>
-            <TextBox Text="{Binding Description}" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+            <TextBox Text="{Binding SelectedProduct.Description}" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
             <Label Content="Precio" Grid.Row="4"/>
-            <TextBox Text="{Binding Price}" Grid.Row="5" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
-            <Button Content="Añadir" Grid.Row="6" HorizontalAlignment="Right" 
-            Command="{Binding AddCommand}" VerticalAlignment="Bottom"/>
+            <TextBox Text="{Binding SelectedProduct.Price}" Grid.Row="5" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+            <Label Content="Categoria" Grid.Row="6"/>
+            <ComboBox Grid.Row="7" VerticalAlignment="Top" ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedProduct.Category}"/>
+            <Grid Grid.Row="8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Content="Añadir" Grid.Column="0" HorizontalAlignment="Right" 
+            Command="{Binding AddCommand}" VerticalAlignment="Center"/>
+                <Button Content="Guardar" Grid.Column="1" HorizontalAlignment="Right" 
+             Command="{Binding SaveCommand}" VerticalAlignment="Center"/>
+                <Button Content="Eliminar" Grid.Column="3" HorizontalAlignment="Right"
+            Command="{Binding RemoveCommand}" VerticalAlignment="Center"/>
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>
