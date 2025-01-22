@@ -31,12 +31,16 @@
             </Grid.RowDefinitions>
             <Label Content="Nombre" Grid.Row="0"/>
             <TextBox Text="{Binding SelectedProduct.Name}" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+            
             <Label Content="Descripcion" Grid.Row="2"/>
             <TextBox Text="{Binding SelectedProduct.Description}" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+            
             <Label Content="Precio" Grid.Row="4"/>
             <TextBox Text="{Binding SelectedProduct.Price}" Grid.Row="5" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+            
             <Label Content="Categoria" Grid.Row="6"/>
             <ComboBox Grid.Row="7" VerticalAlignment="Top" ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedProduct.Category}"/>
+           
             <Grid Grid.Row="8">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -44,11 +48,11 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Button Content="Añadir" Grid.Column="0" HorizontalAlignment="Right" 
-            Command="{Binding AddCommand}" VerticalAlignment="Center"/>
+            Command="{Binding AddCommand}" VerticalAlignment="Bottom"/>
                 <Button Content="Guardar" Grid.Column="1" HorizontalAlignment="Right" 
-             Command="{Binding SaveCommand}" VerticalAlignment="Center"/>
+             Command="{Binding SaveCommand}" VerticalAlignment="Bottom"/>
                 <Button Content="Eliminar" Grid.Column="3" HorizontalAlignment="Right"
-            Command="{Binding RemoveCommand}" VerticalAlignment="Center"/>
+            Command="{Binding RemoveCommand}" VerticalAlignment="Bottom"/>
             </Grid>
         </Grid>
     </Grid>

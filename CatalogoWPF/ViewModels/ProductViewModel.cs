@@ -6,6 +6,7 @@ using Services_Repos.Exceptions;
 using Services_Repos.Models.Data_Classes;
 using Services_Repos.Services;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace CatalogoWPF.ViewModels;
 
@@ -37,6 +38,7 @@ partial class ProductViewModel : ObservableObject
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(Categories))]
     [NotifyPropertyChangedFor(nameof(IsProdSelected))]
+    [NotifyPropertyChangedFor(nameof(NotIdZero))]
     [NotifyCanExecuteChangedFor(nameof(AddCommand))]
     [NotifyCanExecuteChangedFor(nameof(RemoveCommand))]
     [NotifyCanExecuteChangedFor(nameof(SaveCommand))]
@@ -46,6 +48,9 @@ partial class ProductViewModel : ObservableObject
     //Category? _selectedCategory;
 
     private bool IsProdSelected => SelectedProduct is not null;
+
+    private bool NotIdZero => SelectedProduct is not null && SelectedProduct.Id != 0;
+
 
     [RelayCommand]
     private void Add() => SelectedProduct = new(0, "", "", 0);
@@ -58,9 +63,16 @@ partial class ProductViewModel : ObservableObject
             productService.GetById(SelectedProduct.Id);
             productService.Update(SelectedProduct);
         }
-        catch (ProductException ex)
+        catch (ProductException)
         {
-            productService.Add(SelectedProduct);
+            if (SelectedProduct.Category is not null)
+            {
+                productService.Add(SelectedProduct);
+            } else
+            {
+                MessageBox.Show("Category cannot be empty");
+            }
+         
         }
 
        // SelectedCategory = null;
@@ -68,12 +80,21 @@ partial class ProductViewModel : ObservableObject
         RefreshCollection();
     }
 
-    [RelayCommand(CanExecute = nameof(IsProdSelected))]
+    [RelayCommand(CanExecute = nameof(NotIdZero))]
     private void Remove()
     {
-        productService.Remove(SelectedProduct.Id);
-        RefreshCollection();
-        SelectedProduct = null;
+        try
+        {
+            productService.Remove(SelectedProduct.Id);
+            RefreshCollection();
+            SelectedProduct = null;
+        }
+        catch (ProductException ex)
+        {
+            MessageBox.Show(ex.Message);
+            SelectedProduct = null;
+        }
+        
     }
 
     private void RefreshCollection()

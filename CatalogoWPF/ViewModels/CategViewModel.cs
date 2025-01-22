@@ -6,6 +6,7 @@ using Services_Repos.Exceptions;
 using Services_Repos.Models.Data_Classes;
 using Services_Repos.Services;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace CatalogoWPF.ViewModels;
 
@@ -18,12 +19,16 @@ partial class CategViewModel (IService<Category> categoryService) : ObservableOb
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(Categories))]
     [NotifyPropertyChangedFor(nameof(IsCategSelected))]
+    [NotifyPropertyChangedFor(nameof(NotIdZero))]
     [NotifyCanExecuteChangedFor(nameof(AddCommand))]
     [NotifyCanExecuteChangedFor(nameof(RemoveCommand))]
     [NotifyCanExecuteChangedFor(nameof(SaveCommand))]
     Category? _selectedCategory;
 
     private bool IsCategSelected => SelectedCategory is not null;
+
+    private bool NotIdZero => SelectedCategory is not null && SelectedCategory.Id != 0;
+
 
 
     [RelayCommand]
@@ -39,7 +44,7 @@ partial class CategViewModel (IService<Category> categoryService) : ObservableOb
             categoryService.Update(SelectedCategory);
             SendMessage();
         }
-        catch (CategoryException ex) {
+        catch (CategoryException) {
         
             categoryService.Add(SelectedCategory);
             SendMessage();
@@ -49,13 +54,22 @@ partial class CategViewModel (IService<Category> categoryService) : ObservableOb
         RefreshCollection();
     }
 
-    [RelayCommand(CanExecute = nameof (IsCategSelected))]
+    [RelayCommand(CanExecute = nameof (NotIdZero))]
     private void Remove()
     {
-        categoryService.Remove(SelectedCategory.Id);
-        RefreshCollection();
-        SelectedCategory = null;
-        SendMessage();
+        try
+        {
+            categoryService.Remove(SelectedCategory.Id);
+            RefreshCollection();
+            SelectedCategory = null;
+            SendMessage();
+        }
+        catch (CategoryException ex)
+        {
+            MessageBox.Show(ex.Message);
+            SelectedCategory = null;
+        }
+       
     }
     private void SendMessage()
     {
