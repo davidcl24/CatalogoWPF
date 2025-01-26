@@ -36,6 +36,7 @@ namespace CatalogoWPF
             services.AddScoped<IRepository<Category>, CategoryRepository>();
             services.AddScoped<IService<Product>, ProductService>();
             services.AddScoped<IService<Category>, CategoryService>();
+            services.AddScoped<SettingsService>();
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer("Server=localhost, 1433;Database=prodDB;User Id=sa;Password=Interfaces-2425;TrustServerCertificate=true;"));
             var serviceProvider = services.BuildServiceProvider();
 

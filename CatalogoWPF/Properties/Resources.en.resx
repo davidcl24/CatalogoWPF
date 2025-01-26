@@ -117,13 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BtAdd" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="BtCharts" xml:space="preserve">
+    <value>Charts</value>
+  </data>
+  <data name="BtDel" xml:space="preserve">
+    <value>Delete</value>
+  </data>
   <data name="BtDetail" xml:space="preserve">
     <value>Products</value>
   </data>
   <data name="BtHome" xml:space="preserve">
     <value>Categories</value>
   </data>
+  <data name="BtSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
   <data name="BtSettings" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="LabelCateg" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="LabelDesc" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="LabelName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="LabelPrice" xml:space="preserve">
+    <value>Price</value>
   </data>
 </root>

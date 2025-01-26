@@ -5,15 +5,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CatalogoWPF.Views"
              xmlns:viewmodel="clr-namespace:CatalogoWPF.ViewModels"
+             xmlns:properties="clr-namespace:CatalogoWPF.Properties"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance viewmodel:SettingsViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
 
-        <ComboBox SelectedValuePath="Content" SelectionChanged="comboBox_SelectionChanged" x:Name="comboBox" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <ComboBoxItem Content="es"/>
-            <ComboBoxItem Content="en"/>
+        <ComboBox ItemsSource="{Binding Cultures}" SelectedItem="{Binding SelectedCulture}" VerticalAlignment="Center" HorizontalAlignment="Center">
+            
         </ComboBox>
-        
+
+        <Button Command="{Binding ChangeLangCommand}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="{x:Static properties:Resources.BtSave}"/>
     </Grid>
 </UserControl>

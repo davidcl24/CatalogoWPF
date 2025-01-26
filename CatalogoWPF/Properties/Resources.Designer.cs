@@ -61,6 +61,33 @@ namespace CatalogoWPF.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a New.
+        /// </summary>
+        public static string BtAdd {
+            get {
+                return ResourceManager.GetString("BtAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Charts.
+        /// </summary>
+        public static string BtCharts {
+            get {
+                return ResourceManager.GetString("BtCharts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Delete.
+        /// </summary>
+        public static string BtDel {
+            get {
+                return ResourceManager.GetString("BtDel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Products.
         /// </summary>
         public static string BtDetail {
@@ -79,11 +106,56 @@ namespace CatalogoWPF.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Save.
+        /// </summary>
+        public static string BtSave {
+            get {
+                return ResourceManager.GetString("BtSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Settings.
         /// </summary>
         public static string BtSettings {
             get {
                 return ResourceManager.GetString("BtSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Category.
+        /// </summary>
+        public static string LabelCateg {
+            get {
+                return ResourceManager.GetString("LabelCateg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Description.
+        /// </summary>
+        public static string LabelDesc {
+            get {
+                return ResourceManager.GetString("LabelDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Name.
+        /// </summary>
+        public static string LabelName {
+            get {
+                return ResourceManager.GetString("LabelName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Price.
+        /// </summary>
+        public static string LabelPrice {
+            get {
+                return ResourceManager.GetString("LabelPrice", resourceCulture);
             }
         }
     }

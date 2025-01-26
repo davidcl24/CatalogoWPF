@@ -17,13 +17,13 @@
         </Grid.ColumnDefinitions>
         <ListView ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedCategory}" Grid.Column="0"/>
         <Grid Grid.Column="1">
-            <!--<Button Content="hola" Command="{Binding HolaCommand}"/>-->
+          
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"/>
                 <RowDefinition/>
                 <RowDefinition Height="70"/>
             </Grid.RowDefinitions>
-            <Label Content="Nombre" Grid.Row="0"/>
+            <Label Content="{x:Static properties:Resources.LabelName}" Grid.Row="0"/>
             <TextBox Text="{Binding SelectedCategory.Name}" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
 
             <Grid Grid.Row="2">
@@ -32,11 +32,11 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button Content="Añadir" Grid.Column="0" HorizontalAlignment="Right" 
+                <Button Content="{x:Static properties:Resources.BtAdd}" Grid.Column="0" HorizontalAlignment="Right" 
                         Command="{Binding AddCommand}" VerticalAlignment="Bottom"/>
-                <Button Content="Guardar" Grid.Column="1" HorizontalAlignment="Right" 
-                         Command="{Binding SaveCommand}" VerticalAlignment="Bottom"/>
-                <Button Content="Eliminar" Grid.Column="3" HorizontalAlignment="Right"
+                <Button Content="{x:Static properties:Resources.BtSave}" Grid.Column="1" HorizontalAlignment="Right" 
+                        Command="{Binding SaveCommand}" VerticalAlignment="Bottom"/>
+                <Button Content="{x:Static properties:Resources.BtDel}" Grid.Column="2" HorizontalAlignment="Right"
                         Command="{Binding RemoveCommand}" VerticalAlignment="Bottom"/>
             </Grid>
 
