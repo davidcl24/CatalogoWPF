@@ -30,11 +30,16 @@
                                 Text="{x:Static properties:Resources.BtDetail}" Icon="{StaticResource CategTag}" Stroke="{StaticResource IconBrush}"
                                 Command="{Binding ActivateProductViewCommand}"
                                 GroupName="SideMenu"/>
+   
+            <controls:NavButton Margin="3" Background="{StaticResource IconBackBrush}" 
+                     Text="Charts" Icon="{StaticResource Settings}" Stroke="{StaticResource IconBrush}"
+                     Command="{Binding ActivateChartsViewCommand}"
+                     GroupName="SideMenu"/>
 
             <controls:NavButton Margin="3" Background="{StaticResource IconBackBrush}" 
-                                Text="{x:Static properties:Resources.BtSettings}" Icon="{StaticResource Settings}" Stroke="{StaticResource IconBrush}"
-                                Command="{Binding ActivateSettingsViewCommand}"
-                                GroupName="SideMenu"/>
+                    Text="{x:Static properties:Resources.BtSettings}" Icon="{StaticResource Settings}" Stroke="{StaticResource IconBrush}"
+                    Command="{Binding ActivateSettingsViewCommand}"
+                    GroupName="SideMenu"/>
             <!--<RadioButton Content="Inicio"
                          Command="{Binding ActivateHomeViewCommand}"
                          IsChecked="True" GroupName="SideMenu" />-->

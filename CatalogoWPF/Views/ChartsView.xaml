@@ -4,13 +4,32 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CatalogoWPF.Views"
-             xmlns:microcharts="http://schemas.actiprosoftware.com/winfx/xaml/microcharts"
              xmlns:viewmodel="clr-namespace:CatalogoWPF.ViewModels"
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              xmlns:properties="clr-namespace:CatalogoWPF.Properties"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance viewmodel:ChartsViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <microcharts:
+        <lvc:CartesianChart>
+            <lvc:CartesianChart.Series>
+                <lvc:ColumnSeries Title="Products" Values="{Binding ChartValues}"/>
+            </lvc:CartesianChart.Series>
+            <lvc:CartesianChart.AxisX>
+                <lvc:Axis Title="Categs" Labels="{Binding CategoryNames}">
+                    <lvc:Axis.Separator>
+                        <lvc:Separator Step="1"/>
+                    </lvc:Axis.Separator>
+                </lvc:Axis>
+            </lvc:CartesianChart.AxisX>
+            <lvc:CartesianChart.AxisY>
+                <lvc:Axis Title="Products">
+                    <lvc:Axis.Separator>
+                        <lvc:Separator Step="1"/>
+                    </lvc:Axis.Separator>
+                </lvc:Axis>
+            </lvc:CartesianChart.AxisY>
+        </lvc:CartesianChart>
+       
     </Grid>
 </UserControl>

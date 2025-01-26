@@ -1,51 +1,36 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using Microcharts;
 using Services_Repos.Models.Data_Classes;
 using Services_Repos.Services;
-using SkiaSharp;
 using System.Collections.ObjectModel;
+using LiveCharts;
+using LiveCharts.Wpf;
+using LiveCharts.Definitions.Series;
+
 
 namespace CatalogoWPF.ViewModels;
 
 partial class ChartsViewModel : ObservableObject
 {
-    private readonly IService<Product> productService;
     private readonly IService<Category> categService;
-    public ChartsViewModel(IService<Product> productService, IService<Category> categService)
+    public ChartsViewModel(IService<Category> categService)
     {
-        this.productService = productService;
         this.categService = categService;
-        Products = new ObservableCollection<Product>(productService.GetAll());
-        Categories = new ObservableCollection<Category>(categService.GetAll());
-        List<ChartEntry> entries = [];
-        var random = new Random();
-        foreach (Category category in categService.GetAll())
-        {
-            entries.Add(new(category.Products.Count)
-            {
-                Label = category.Name,
-                ValueLabel = category.Products.Count.ToString(),
-                Color = SKColor.Parse($"#{random.Next(0x1000000):X6}")
-            });
-        }
-        Chart = new BarChart()
-        {
-            Entries = entries
-        };
+        IEnumerable<Category> categories = categService.GetAll();
+        ChartValues = new ChartValues<int>(categories.Select(c => c.Products.Count));
+        CategoryNames = categories.Select(c => c.Name).ToArray();
     }
 
-    [ObservableProperty]
-    ObservableCollection<Product> _products;
 
     [ObservableProperty]
-    ObservableCollection<Category> _categories;
+    ChartValues<int> _chartValues;
 
     [ObservableProperty]
-    BarChart _chart;
+    string[] _categoryNames;
 
     private void RefreshCollection()
     {
-        Categories = new(categService.GetAll());
-        Products = new(productService.GetAll());
+        IEnumerable<Category> categories = categService.GetAll();
+        ChartValues =  new ChartValues<int>(categories.Select(c => c.Products.Count));
+        CategoryNames = categories.Select(c => c.Name).ToArray();
     }
 }

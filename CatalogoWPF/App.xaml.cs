@@ -30,6 +30,8 @@ namespace CatalogoWPF
             services.AddTransient<ProductViewModel>();
             services.AddTransient<SettingsView>();
             services.AddTransient<SettingsViewModel>();
+            services.AddTransient<ChartsView>();
+            services.AddTransient<ChartsViewModel>();
             services.AddScoped<IRepository<Product>, ProductRepository>();
             services.AddScoped<IRepository<Category>, CategoryRepository>();
             services.AddScoped<IService<Product>, ProductService>();
