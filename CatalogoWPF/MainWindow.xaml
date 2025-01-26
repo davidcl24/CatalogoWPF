@@ -32,7 +32,7 @@
                                 GroupName="SideMenu"/>
    
             <controls:NavButton Margin="3" Background="{StaticResource IconBackBrush}" 
-                     Text="Charts" Icon="{StaticResource Settings}" Stroke="{StaticResource IconBrush}"
+                     Text="Charts" Icon="{StaticResource Chart}" Stroke="{StaticResource IconBrush}"
                      Command="{Binding ActivateChartsViewCommand}"
                      GroupName="SideMenu"/>
 

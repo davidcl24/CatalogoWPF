@@ -62,12 +62,14 @@ partial class ProductViewModel : ObservableObject
         {
             productService.GetById(SelectedProduct.Id);
             productService.Update(SelectedProduct);
+            SendMessage();
         }
         catch (ProductException)
         {
             if (SelectedProduct.Category is not null)
             {
                 productService.Add(SelectedProduct);
+                SendMessage();
             } else
             {
                 MessageBox.Show("Category cannot be empty");
@@ -88,6 +90,7 @@ partial class ProductViewModel : ObservableObject
             productService.Remove(SelectedProduct.Id);
             RefreshCollection();
             SelectedProduct = null;
+            SendMessage();
         }
         catch (ProductException ex)
         {
@@ -97,6 +100,10 @@ partial class ProductViewModel : ObservableObject
         
     }
 
+    private void SendMessage()
+    {
+        WeakReferenceMessenger.Default.Send(new ValueChangedMessage<string>("Model Changed"));
+    }
     private void RefreshCollection()
     {
        Categories = new(categService.GetAll());
