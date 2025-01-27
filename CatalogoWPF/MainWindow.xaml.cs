@@ -18,6 +18,8 @@ namespace CatalogoWPF
     {
         public MainWindow()
         {
+            Thread.CurrentThread.CurrentCulture = new(Properties.Settings.Default.Language);
+            Thread.CurrentThread.CurrentUICulture = new(Properties.Settings.Default.Language);
             InitializeComponent();
         }
     }
