@@ -158,5 +158,14 @@ namespace CatalogoWPF.Properties {
                 return ResourceManager.GetString("LabelPrice", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Restart the app to show changes..
+        /// </summary>
+        public static string ResetMsg {
+            get {
+                return ResourceManager.GetString("ResetMsg", resourceCulture);
+            }
+        }
     }
 }

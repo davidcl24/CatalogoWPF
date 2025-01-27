@@ -150,4 +150,7 @@
   <data name="LabelPrice" xml:space="preserve">
     <value>Price</value>
   </data>
+  <data name="ResetMsg" xml:space="preserve">
+    <value>Restart the app to show changes.</value>
+  </data>
 </root>

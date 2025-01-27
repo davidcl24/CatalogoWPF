@@ -14,34 +14,22 @@ namespace CatalogoWPF.ViewModels;
 partial class SettingsViewModel : ObservableObject
 {
 
-    private readonly SettingsService settingsService;
 
     [ObservableProperty]
     ObservableCollection<string> _cultures = [];
 
     [ObservableProperty]
-    string _selectedCulture = CultureInfo.CurrentCulture.ToString();
+    string _selectedCulture = Properties.Settings.Default.Language;
 
-    public SettingsViewModel(SettingsService settingsService)
+    public SettingsViewModel() => Cultures = ["es", "en"];
+
+    [RelayCommand]
+    private void ChangeLang()
     {
-        this.settingsService = settingsService;
-        SettingsPropertyCollection list = Properties.Settings.Default.Properties;
-        foreach (SettingsProperty property in list)
-        {
-            Cultures.Add((string)property.DefaultValue);
-        }
+        Properties.Settings.Default.Language = SelectedCulture;
+        Properties.Settings.Default.Save();
+        MessageBox.Show(Properties.Resources.ResetMsg);
     }
 
-    [RelayCommand]
-    private void ChangeLang() => settingsService.ChangeLang(new CultureInfo(SelectedCulture));
 
-    [RelayCommand]
-    //private void ChangeLang()
-    //{
-    //    CultureInfo culture = new(SelectedCulture);
-    //    MessageBox.Show(CultureInfo.CurrentCulture.ToString());
-    //    CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en");
-    //    CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("en");
-    //    MessageBox.Show(CultureInfo.CurrentCulture.ToString());
-    //}
 }
