@@ -47,7 +47,7 @@ partial class ProductViewModel : ObservableObject
     //[ObservableProperty]
     //Category? _selectedCategory;
 
-    private bool IsProdSelected => SelectedProduct is not null;
+    public bool IsProdSelected => SelectedProduct is not null;
 
     private bool NotIdZero => SelectedProduct is not null && SelectedProduct.Id != 0;
 

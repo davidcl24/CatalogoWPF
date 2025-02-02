@@ -4,6 +4,8 @@ using Services_Repos.Services;
 using LiveCharts;
 using CommunityToolkit.Mvvm.Messaging.Messages;
 using CommunityToolkit.Mvvm.Messaging;
+using System.Collections.ObjectModel;
+using LiveCharts.Wpf;
 
 
 namespace CatalogoWPF.ViewModels;
@@ -11,29 +13,36 @@ namespace CatalogoWPF.ViewModels;
 partial class ChartsViewModel : ObservableObject
 {
     private readonly IService<Category> categService;
+
+    [ObservableProperty]
+    private SeriesCollection _series = [];
     public ChartsViewModel(IService<Category> categService)
     {
         this.categService = categService;
-        IEnumerable<Category> categories = categService.GetAll();
-        ChartValues = new ChartValues<int>(categories.Select(c => c.Products.Count));
-        CategoryNames = categories.Select(c => c.Name).ToArray();
+        ConfigChart();
+
         WeakReferenceMessenger.Default.Register<ValueChangedMessage<string>>(this, (r, m) =>
         {
-            RefreshCollection();
+            ConfigChart();
         });
     }
 
-
-    [ObservableProperty]
-    ChartValues<int> _chartValues;
-
-    [ObservableProperty]
-    string[] _categoryNames;
-
-    private void RefreshCollection()
+    private void ConfigChart()
     {
+        Series.Clear();
         IEnumerable<Category> categories = categService.GetAll();
-        ChartValues =  new ChartValues<int>(categories.Select(c => c.Products.Count));
-        CategoryNames = categories.Select(c => c.Name).ToArray();
+       
+        foreach (var category in categories)
+        {
+            Series.Add(new PieSeries
+            {
+                Title = category.Name,
+                Name = category.Name,
+                Values = new ChartValues<int> { category.Products.Count }
+            });
+        }
     }
+
+
+
 }

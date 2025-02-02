@@ -12,9 +12,9 @@ public class Product(int CategoryId, string name, string description, decimal pr
     public override string ToString()
     {
         return $"""
-                Nombre: {Name} 
-                Descripcion: {Description} 
-                Precio: {Price}$
+                {Name} 
+                {Description} 
+                {Price}$
                 """;
     }
 }

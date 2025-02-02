@@ -15,6 +15,9 @@ partial class CategViewModel (IService<Category> categoryService) : ObservableOb
 
     [ObservableProperty]
     ObservableCollection<Category> _categories = new(categoryService.GetAll());
+    [ObservableProperty]
+    bool _isSelected = false;
+
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(Categories))]
@@ -25,7 +28,7 @@ partial class CategViewModel (IService<Category> categoryService) : ObservableOb
     [NotifyCanExecuteChangedFor(nameof(SaveCommand))]
     Category? _selectedCategory;
 
-    private bool IsCategSelected => SelectedCategory is not null;
+    public bool IsCategSelected => SelectedCategory is not null;
 
     private bool NotIdZero => SelectedCategory is not null && SelectedCategory.Id != 0;
 
