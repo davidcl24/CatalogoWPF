@@ -21,6 +21,9 @@
             <DataTemplate DataType="{x:Type viewmodel:ChartsViewModel}">
                 <view:ChartsView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodel:HomeViewModel}">
+                <view:HomeView/>
+            </DataTemplate>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Themes/Light/LightTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>

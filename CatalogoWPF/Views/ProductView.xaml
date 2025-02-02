@@ -27,6 +27,8 @@
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
                 <RowDefinition />
             </Grid.RowDefinitions>
             <Label Content="{x:Static properties:Resources.LabelName}" Grid.Row="0"/>
@@ -41,7 +43,11 @@
             <Label Content="{x:Static properties:Resources.LabelCateg}" Grid.Row="6"/>
             <ComboBox Grid.Row="7" VerticalAlignment="Top" IsEnabled="{Binding Path=IsProdSelected}" ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedProduct.Category}"/>
            
-            <Grid Grid.Row="8">
+            <Label Content="{x:Static properties:Resources.LabelImg}" Grid.Row="8"/>
+            <TextBox Text="{Binding SelectedProduct.ImageUrl}" IsEnabled="{Binding Path=IsProdSelected}" Grid.Row="9" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+
+
+                <Grid Grid.Row="10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>

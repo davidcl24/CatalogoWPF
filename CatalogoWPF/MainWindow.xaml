@@ -9,7 +9,7 @@
         xmlns:properties="clr-namespace:CatalogoWPF.Properties"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance viewmodel:MainViewModel}"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="500" Width="900">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -20,9 +20,15 @@
         <StackPanel Background="{StaticResource SideBarBackBrush}">
 
             <controls:NavButton Margin="3" Background="{StaticResource IconBackBrush}" 
-                                Text="{x:Static properties:Resources.BtHome}" Icon="{StaticResource Store}" 
+                                Text="{x:Static properties:Resources.BtHomePage}" Icon="{StaticResource Home}" 
                                 Stroke="{StaticResource IconBrush}"
                                 IsChecked="True"
+                                Command="{Binding ActivateHomeViewCommand}"
+                                GroupName="SideMenu"/>  
+
+            <controls:NavButton Margin="3" Background="{StaticResource IconBackBrush}" 
+                                Text="{x:Static properties:Resources.BtHome}" Icon="{StaticResource Store}" 
+                                Stroke="{StaticResource IconBrush}"
                                 Command="{Binding ActivateCategViewCommand}"
                                 GroupName="SideMenu"/>
 
@@ -32,15 +38,15 @@
                                 GroupName="SideMenu"/>
    
             <controls:NavButton Margin="3" Background="{StaticResource IconBackBrush}" 
-                     Text="{x:Static properties:Resources.BtCharts}" Icon="{StaticResource Chart}" Stroke="{StaticResource IconBrush}"
-                     Command="{Binding ActivateChartsViewCommand}"
-                     GroupName="SideMenu"/>
+                                Text="{x:Static properties:Resources.BtCharts}" Icon="{StaticResource Chart}" Stroke="{StaticResource IconBrush}"
+                                Command="{Binding ActivateChartsViewCommand}"
+                                GroupName="SideMenu"/>
 
             <controls:NavButton Margin="3" Background="{StaticResource IconBackBrush}" 
-                    Text="{x:Static properties:Resources.BtSettings}" Icon="{StaticResource Settings}" Stroke="{StaticResource IconBrush}"
-                    Command="{Binding ActivateSettingsViewCommand}"
-                    GroupName="SideMenu"/>
-            <!--<RadioButton Content="Inicio"
+                                Text="{x:Static properties:Resources.BtSettings}" Icon="{StaticResource Settings}" Stroke="{StaticResource IconBrush}"
+                                Command="{Binding ActivateSettingsViewCommand}"
+                                GroupName="SideMenu"/>
+                        <!--<RadioButton Content="Inicio"
                          Command="{Binding ActivateHomeViewCommand}"
                          IsChecked="True" GroupName="SideMenu" />-->
             <!--<RadioButton Content="Detalle"

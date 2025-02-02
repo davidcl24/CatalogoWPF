@@ -24,6 +24,8 @@ namespace CatalogoWPF
 
             services.AddTransient<MainWindow>();
             services.AddTransient<MainViewModel>();
+            services.AddTransient<HomeView>();
+            services.AddTransient<HomeViewModel>();
             services.AddTransient<CategView>();
             services.AddTransient<CategViewModel>();
             services.AddTransient<ProductView>();

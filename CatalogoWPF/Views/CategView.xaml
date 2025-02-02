@@ -20,13 +20,20 @@
           
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
                 <RowDefinition/>
                 <RowDefinition Height="70"/>
             </Grid.RowDefinitions>
             <Label Content="{x:Static properties:Resources.LabelName}" Grid.Row="0"/>
             <TextBox Text="{Binding SelectedCategory.Name}" IsEnabled="{Binding Path=IsCategSelected}" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
 
-            <Grid Grid.Row="2">
+            <Label Content="{x:Static properties:Resources.LabelImg}" Grid.Row="2"/>
+            <TextBox Text="{Binding SelectedCategory.ImgUrl}" IsEnabled="{Binding Path=IsCategSelected}" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+
+
+            <Grid Grid.Row="5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>

@@ -132,6 +132,9 @@
   <data name="BtHome" xml:space="preserve">
     <value>Categories</value>
   </data>
+  <data name="BtHomePage" xml:space="preserve">
+    <value>Home</value>
+  </data>
   <data name="BtSave" xml:space="preserve">
     <value>Save</value>
   </data>
@@ -143,6 +146,9 @@
   </data>
   <data name="LabelDesc" xml:space="preserve">
     <value>Description</value>
+  </data>
+  <data name="LabelImg" xml:space="preserve">
+    <value>Image</value>
   </data>
   <data name="LabelName" xml:space="preserve">
     <value>Name</value>

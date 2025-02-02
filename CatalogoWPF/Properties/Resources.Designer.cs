@@ -106,6 +106,15 @@ namespace CatalogoWPF.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Home.
+        /// </summary>
+        public static string BtHomePage {
+            get {
+                return ResourceManager.GetString("BtHomePage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Save.
         /// </summary>
         public static string BtSave {
@@ -138,6 +147,15 @@ namespace CatalogoWPF.Properties {
         public static string LabelDesc {
             get {
                 return ResourceManager.GetString("LabelDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Image.
+        /// </summary>
+        public static string LabelImg {
+            get {
+                return ResourceManager.GetString("LabelImg", resourceCulture);
             }
         }
         

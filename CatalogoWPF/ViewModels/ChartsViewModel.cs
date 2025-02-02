@@ -4,7 +4,6 @@ using Services_Repos.Services;
 using LiveCharts;
 using CommunityToolkit.Mvvm.Messaging.Messages;
 using CommunityToolkit.Mvvm.Messaging;
-using System.Collections.ObjectModel;
 using LiveCharts.Wpf;
 
 
@@ -29,7 +28,8 @@ partial class ChartsViewModel : ObservableObject
 
     private void ConfigChart()
     {
-        Series.Clear();
+        Series = [];
+        
         IEnumerable<Category> categories = categService.GetAll();
        
         foreach (var category in categories)
