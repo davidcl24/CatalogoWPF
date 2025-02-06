@@ -35,7 +35,7 @@ partial class CategViewModel (IService<Category> categoryService) : ObservableOb
 
 
     [RelayCommand]
-    private void Add() => SelectedCategory = new("", "");
+    private void Add() => SelectedCategory = new();
 
 
     [RelayCommand(CanExecute = nameof(IsCategSelected))]

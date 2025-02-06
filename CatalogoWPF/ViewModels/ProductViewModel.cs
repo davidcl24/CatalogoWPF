@@ -53,7 +53,7 @@ partial class ProductViewModel : ObservableObject
 
 
     [RelayCommand]
-    private void Add() => SelectedProduct = new(0, "", "", 0, "");
+    private void Add() => SelectedProduct = new();
 
     [RelayCommand(CanExecute = nameof(IsProdSelected))]
     private void Save()
