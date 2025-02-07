@@ -2,6 +2,7 @@
 using CatalogoWPF.Views;
 using Microsoft.Extensions.DependencyInjection;
 using Services_Repos.Models.Data_Classes;
+using Services_Repos.Rest;
 using Services_Repos.Services;
 using System.Windows;
 
@@ -30,6 +31,8 @@ namespace CatalogoWPF
             services.AddTransient<SettingsViewModel>();
             services.AddTransient<ChartsView>();
             services.AddTransient<ChartsViewModel>();
+            services.AddScoped<IRestClient<Product>, RestClientProduct>();
+            services.AddScoped<IRestClient<Category>, RestClientCategory>();
             services.AddScoped<IService<Product>, ProductService>();
             services.AddScoped<IService<Category>, CategoryService>();
             

@@ -1,5 +1,4 @@
 ﻿using Services_Repos.Models.Data_Classes;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Net.Http;
 using System.Text.Json;
@@ -8,15 +7,14 @@ namespace Services_Repos.Rest;
 
 public class RestClientProduct : IRestClient<Product>
 {
-    private List<Product>? products;
-    readonly HttpClient _client;
-    readonly JsonSerializerOptions _serializerOptions;
-
-    public string Endpoint { get; set; }
-
+    private readonly List<Product> _products;
+    private readonly HttpClient _client;
+    private readonly JsonSerializerOptions _serializerOptions;
+    private string _endpoint;
     public RestClientProduct()
     {
-        products = [];
+        _endpoint = "products";
+        _products = [];
         _serializerOptions = new JsonSerializerOptions
         {
             PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
@@ -28,7 +26,7 @@ public class RestClientProduct : IRestClient<Product>
 
     public async Task<List<Product>> RefreshDataAsync()
     {
-        Uri uri = new Uri(string.Format(Constants.Consts.HTTP+Endpoint, string.Empty));
+        Uri uri = new Uri(string.Format(Constants.Consts.HTTP+_endpoint, string.Empty));
         try
         {
             HttpResponseMessage response = await _client.GetAsync(uri);
@@ -36,27 +34,25 @@ public class RestClientProduct : IRestClient<Product>
             {
                 string content = await response.Content.ReadAsStringAsync();
 
-                using(JsonDocument doc = JsonDocument.Parse(content))
-                {
-                    JsonElement root = doc.RootElement;
+                using JsonDocument doc = JsonDocument.Parse(content);
+                JsonElement root = doc.RootElement;
 
-                    foreach (var jsonElement in root.EnumerateArray())
+                foreach (var jsonElement in root.EnumerateArray())
+                {
+                    _products.Add(new Product
                     {
-                        products.Add(new Product
+                        Name = jsonElement.GetProperty("title").GetString(),
+                        Description = jsonElement.GetProperty("description").GetString(),
+                        ImageUrl = jsonElement.GetProperty("images")[0].GetString(),
+                        Price = (decimal)jsonElement.GetProperty("price").GetDouble(),
+                        CategoryId = jsonElement.GetProperty("category").GetProperty("id").GetInt32(),
+                        Category = new Category
                         {
-                            Name = jsonElement.GetProperty("title").GetString(),
-                            Description = jsonElement.GetProperty("description").GetString(),
-                            ImageUrl = jsonElement.GetProperty("images")[0].GetString(),
-                            Price = (decimal) jsonElement.GetProperty("price").GetDouble(),
-                            CategoryId = jsonElement.GetProperty("category").GetProperty("id").GetInt32(),
-                            Category = new Category
-                            {
-                                Id = jsonElement.GetProperty("category").GetProperty("id").GetInt32(),
-                                Name = jsonElement.GetProperty("category").GetProperty("name").GetString(),
-                                ImgUrl = jsonElement.GetProperty("category").GetProperty("name").GetString()
-                            }
-                        });
-                    }
+                            Id = jsonElement.GetProperty("category").GetProperty("id").GetInt32(),
+                            Name = jsonElement.GetProperty("category").GetProperty("name").GetString(),
+                            ImgUrl = jsonElement.GetProperty("category").GetProperty("name").GetString()
+                        }
+                    });
                 }
             }
         }
@@ -65,7 +61,7 @@ public class RestClientProduct : IRestClient<Product>
             Debug.WriteLine(@"\tERROR {0}", ex.Message);
         }
 
-        return products;
+        return _products;
     }
 
 }

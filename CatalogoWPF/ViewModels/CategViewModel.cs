@@ -10,11 +10,12 @@ using System.Windows;
 
 namespace CatalogoWPF.ViewModels;
 
-partial class CategViewModel (IService<Category> categoryService) : ObservableObject
+partial class CategViewModel : ObservableObject
 {
+    private readonly IService<Category> categoryService;
 
     [ObservableProperty]
-    ObservableCollection<Category> _categories = new(categoryService.GetAll());
+    ObservableCollection<Category> _categories;
     [ObservableProperty]
     bool _isSelected = false;
 
@@ -27,6 +28,13 @@ partial class CategViewModel (IService<Category> categoryService) : ObservableOb
     [NotifyCanExecuteChangedFor(nameof(RemoveCommand))]
     [NotifyCanExecuteChangedFor(nameof(SaveCommand))]
     Category? _selectedCategory;
+
+    public CategViewModel(IService<Category> categoryService)
+    {
+        this.categoryService = categoryService;
+
+        RefreshCollection();
+    }
 
     public bool IsCategSelected => SelectedCategory is not null;
 
@@ -79,9 +87,9 @@ partial class CategViewModel (IService<Category> categoryService) : ObservableOb
         WeakReferenceMessenger.Default.Send(new ValueChangedMessage<string>("Model Changed"));
     }
 
-    private void RefreshCollection()
+    private async void RefreshCollection()
     {
-        Categories = new(categoryService.GetAll());
+        Categories = new(await categoryService.GetAllAsync());
     }
 
 }

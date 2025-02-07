@@ -18,19 +18,19 @@ partial class ChartsViewModel : ObservableObject
     public ChartsViewModel(IService<Category> categService)
     {
         this.categService = categService;
-        ConfigChart();
+        //ConfigChart();
 
         WeakReferenceMessenger.Default.Register<ValueChangedMessage<string>>(this, (r, m) =>
         {
-            ConfigChart();
+            //ConfigChart();
         });
     }
 
-    private void ConfigChart()
+    private async void ConfigChart()
     {
         Series = [];
         
-        IEnumerable<Category> categories = categService.GetAll();
+        IEnumerable<Category> categories = await categService.GetAllAsync();
        
         foreach (var category in categories)
         {
@@ -42,7 +42,5 @@ partial class ChartsViewModel : ObservableObject
             });
         }
     }
-
-
 
 }

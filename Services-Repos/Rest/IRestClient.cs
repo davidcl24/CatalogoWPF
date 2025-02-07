@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Services_Repos.Rest
 {
-    internal interface IRestClient<T>
+    public interface IRestClient<T>
     {
         public Task<List<T>> RefreshDataAsync();
     }

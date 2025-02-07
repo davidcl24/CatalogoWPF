@@ -16,8 +16,7 @@ partial class HomeViewModel : ObservableObject
     {
         this.productService = productService;
         this.categService = categService;
-        Products = new(productService.GetAll().Select(c => c.ImageUrl).ToList());
-        Categories = new(categService.GetAll().Select(c => c.ImgUrl).ToList());
+        RefreshCollection();
 
         WeakReferenceMessenger.Default.Register<ValueChangedMessage<string>>(this, (r, m) =>
         {
@@ -33,9 +32,11 @@ partial class HomeViewModel : ObservableObject
     ObservableCollection<string> _categories;
 
 
-    private void RefreshCollection()
+    private async void RefreshCollection()
     {
-        Categories = new(categService.GetAll().Select(c => c.ImgUrl).ToList());
-        Products = new(productService.GetAll().Select(c => c.ImageUrl).ToList());
+        var categories = await categService.GetAllAsync();
+        var products = await productService.GetAllAsync();
+        Categories = new(categories.Select(c => c.ImgUrl).ToList());
+        Products = new(products.Select(c => c.ImageUrl).ToList());
     }
 }

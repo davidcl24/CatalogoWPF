@@ -20,8 +20,7 @@ partial class ProductViewModel : ObservableObject
     {
         this.productService = productService;
         this.categService = categService;
-        Products = new ObservableCollection<Product>(productService.GetAll());
-        Categories = new ObservableCollection<Category>(categService.GetAll());
+        RefreshCollection();
 
         WeakReferenceMessenger.Default.Register<ValueChangedMessage<string>>(this, (r, m) =>
         {
@@ -104,10 +103,10 @@ partial class ProductViewModel : ObservableObject
     {
         WeakReferenceMessenger.Default.Send(new ValueChangedMessage<string>("Model Changed"));
     }
-    private void RefreshCollection()
+    private async void RefreshCollection()
     {
-       Categories = new(categService.GetAll());
-       Products = new(productService.GetAll());
+       Categories = new(await categService.GetAllAsync());
+       Products = new(await productService.GetAllAsync());
     }
 
 }
