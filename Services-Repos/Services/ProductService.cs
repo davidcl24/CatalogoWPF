@@ -52,7 +52,6 @@ public class ProductService(IRestClient<Product> productClient) : IService<Produ
         return await productClient.RefreshDataAsync();
       
     }
-
     public void Update(Product p)
     {
         //Product pr = GetById(p.Id);
