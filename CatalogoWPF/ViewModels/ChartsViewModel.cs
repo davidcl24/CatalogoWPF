@@ -42,5 +42,4 @@ partial class ChartsViewModel : ObservableObject
             });
         }
     }
-
 }
